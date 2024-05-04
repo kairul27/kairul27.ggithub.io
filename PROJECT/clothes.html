@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACNRCSS MERCH</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product {
+            width: 300px;
+            margin-bottom: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .cart h2 {
+            margin-top: 0;
+        }
+
+        .cart ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        #buy-btn {
+            background-color: #28a745;
+        }
+
+        #buy-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Style for back button link */
+        .back-link {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ACNRCSS MERCH</h1>
+        </header>
+
+        <!-- Back Button Link -->
+        <a href="C:\Users\admin\Downloads\New folder\PROJECT\index.html" class="back-link">&#9664; Back</a>
+
+        <!-- Product Container -->
+        <div class="product-container">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\f1 merch.webp" alt="Product 1">
+                <h3>F1 T-Shirt</h3>
+                <p>$29.99</p>
+                <button onclick="addToCart('F1 T-Shirt', 29.99)">Add to Cart</button>
+            </div>
+
+           <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\il_570xN.5975659321_ewtk.avif" alt="Product 3">
+                <h3>F1 Mclaren Dog Bandana</h3>
+                <p>$13.99</p>
+                <button onclick="addToCart('F1 Mclaren Dog Bandana', 13.99)">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\s-l1200.webp" alt="Product 3">
+                <h3>F1 Hoodie</h3>
+                <p>$49.99</p>
+                <button onclick="addToCart('F1 Hoodie', 49.99)">Add to Cart</button>
+            </div>
+            <!-- Add more products here -->
+        </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart" id="cart">
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total">0</span></p>
+        <button id="buy-btn" onclick="buyItems()">Buy</button>
+    </div>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(productName, price) {
+            cartItems.push({ name: productName, price: price });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartList = document.getElementById('cart-items');
+            cartList.innerHTML = '';
+            let total = 0;
+            cartItems.forEach((item, index) => {
+                let li = document.createElement('li');
+                li.className = 'cart-item';
+                li.textContent = `${item.name} - $${item.price}`;
+                let removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.className = 'remove-btn';
+                removeBtn.onclick = function() {
+                    cartItems.splice(index, 1);
+                    updateCart();
+                };
+                li.appendChild(removeBtn);
+                cartList.appendChild(li);
+                total += item.price;
+            });
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+
+        function buyItems() {
+            alert('Thank you for your purchase!');
+            cartItems = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>
