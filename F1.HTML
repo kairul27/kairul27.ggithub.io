@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACNRCSS F1</title>
+    <style>
+        body {
+            background-color: #28282B;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        /* Container for products and cart */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Product container */
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: calc(50% - 20px); /* Adjust product width for responsiveness */
+            box-sizing: border-box;
+            text-align: center; /* Center the content */
+            background-color: #A1AEB1; /* White background */
+        }
+
+        /* Cart container */
+        #cart {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: calc(33.33% - 20px); /* Adjust cart width for responsiveness */
+            box-sizing: border-box;
+            margin-top: 20px;
+            margin-right: 20px;
+            text-align: center; /* Center the content */
+            background-color: #CBC1AE; /* White background */
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        /* Styles for buttons */
+        .product button, #checkout-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 80%; /* Adjust button width for responsiveness */
+            box-sizing: border-box;
+        }
+
+        .product button:hover, #checkout-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for the remove button */
+        .remove-btn {
+            background-color: #dc3545; /* Red color for remove button */
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333; /* Darker red color on hover */
+        }
+
+        /* Product image */
+        .product img {
+            max-width: 75%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Cart styles */
+        #cart-items {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #cart-items li {
+            margin-bottom: 10px;
+        }
+
+        /* Checkout button */
+        #checkout-btn {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Center the header */
+        header {
+            text-align: center;
+            color: white;
+        }
+
+        /* Back button styles */
+        #back-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        #back-btn:hover {
+            background-color: #0056b3;
+        }
+		h1{ font-family: Arial Black;
+	}
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="C:\Users\admin\Downloads\New folder\PROJECT\index.html" id="back-btn">&#9664;</a>
+
+    <!-- Store Header -->
+    <header>
+        <h1 id="store">ACNRCSS F1</h1>
+    </header>
+
+    <!-- Products and Cart Container -->
+    <div class="container">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\McLaren-MP4-25-Mercedes-160509.jpg" alt="Product 1">
+                <h3>2010 McLaren MP4-25A GTB</h3>
+                <p>$1,250,000</p>
+                <!-- Add colorGroupName parameter -->
+                <button onclick="addToCart('2010 McLaren MP4-25A', 1250000)">Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\34._2002_Ferrari_F2002-09_ky9fas" alt="Product 2">
+                <h3>2002 Ferrari F2002</h3>
+                <p>$2,000,000</p>
+                <button onclick="addToCart('2002 Ferrari F2002', 2000000)">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\images (2).jpg" alt="Product 3">
+                <h3>1954 Mercedes W196R</h3>
+                <p>$20,000,000</p>
+                <button onclick="addToCart('1954 Mercedes W196R', 20000000)">Add to Cart</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\2003-Ferrari-F2003-GA1300120_.jpg" alt="Product 4">
+                <h3>2003 Ferrari F2003</h3>
+                <p>$3,000,000</p>
+                <!-- Add colorGroupName parameter -->
+                <button onclick="addToCart('2003 Ferrari F2003', 3000000)">Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product">
+                <img src="C:\Users\admin\Downloads\New folder\PROJECT\images (1).jpg" alt="Product 5">
+                <h3>2001 Ferrari F2001</h3>
+                <p>$4,000,000</p>
+                <!-- Add colorGroupName parameter -->
+                <button onclick="addToCart('2001 Ferrari F2001', 4000000)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <!-- Cart -->
+        <div id="cart">
+            <h2>Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button id="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let cartItems = [];
+
+        function addToCart(productName, price) {
+            cartItems.push({ name: productName, price: price});
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartList = document.getElementById('cart-items');
+            cartList.innerHTML = '';
+            let total = 0;
+            cartItems.forEach((item, index) => {
+                let li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price}`;
+                let removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.className = 'remove-btn';
+                removeBtn.onclick = function() {
+                    cartItems.splice(index, 1);
+                    updateCart();
+                };
+                li.appendChild(removeBtn);
+                cartList.appendChild(li);
+                total += item.price;
+            });
+            document.getElementById('total').textContent = total;
+        }
+
+        function checkout() {
+            alert('Checkout complete!');
+            cartItems = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>
