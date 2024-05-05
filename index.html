@@ -1,282 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-body {
-            background-color: 	#1B1212; /* Light gray background */
-        }
-.menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.bar {
-    width: 30px;
-    height: 3px;
-    background-color: #fff;
-    margin: 6px 0;
-    transition: 0.4s;
-}
-
-.menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    transition: 0.4s;
-    overflow-y: auto;
-    z-index: 1000;
-}
-
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.menu ul li {
-    padding: 20px;
-}
-
-.menu ul li a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.menu.active {
-    left: 0;
-}
-
-.slideshow-container {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-.slides {
-    display: none;
-    max-width: 100%;
-    height: auto;
-}
-
-.fade {
-    animation: fade 1.5s;
-}
-
-@keyframes fade {
-    from { opacity: .4 }
-    to { opacity: 1 }
-}
-
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.categories {
-    background-color: #f2f2f2;
-    padding: 50px 0;
-}
-
-.container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.categories {
-    background-color: #f0f0f0; /* Light gray background */
-    padding: 20px;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.category {
-text-align: center;
-    margin-bottom: 20px; 	
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-	background-color: #36454F;
-}
-
-.category img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 5px;
-}
-
-.category img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.category h2 {
-    margin-top: 10px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 50px 0;
-}
-
-.container footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-.contact, .newsletter {
-    flex: 1;
-    margin: 0 20px;
-}
-
-.contact p, .newsletter p {
-    margin: 10px 0;
-}
-
-.contact h2, .newsletter h2 {
-    margin-bottom: 20px;
-}
-
-form input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-form button {
-    padding: 10px 20px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #cc0000;
-}
-
-a {
-            text-decoration: none; /* Remove underline */
-            color: inherit; /* Inherit color from parent */
-        }
-
-        a:hover {
-            text-decoration: underline; /* Add underline on hover */
-        }
-
-        .category h2 {
-            color: black; /* Set h2 color to black */
-        }
-		
- .top-text-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100px; /* Adjust the height as needed */
-        }
-
-        .top-text {
-            text-align: center;
-            border: 2px solid black; /* Black border */
-            padding: 10px;
-            background-color: black; /* Black background */
-            color: white; /* White text color */
-            font-size: 24px; /* Larger font size */
-            font-family: 'Pro Racing', sans-serif; /* Apply Pro Racing font */
-        }
-
-.fade {
-    animation: fade 5s; /* Change duration to 3 seconds */
-}
-
-@keyframes fade {
-    from { opacity: .4 }
-    to { opacity: 1 }
-}
-
-.newsletter button {
-            background-color: black; /* Set button background color to black */
-            color: white; /* Set button text color to white */
-            border: none; /* Remove button border */
-            padding: 10px 20px; /* Adjust button padding */
-            cursor: pointer;
-            transition: background-color 0.3s; /* Add transition effect */
-        }
-
-        .newsletter button:hover {
-            background-color: #333; /* Change button background color on hover */
-        }
-		h1 { font-family: Arial Black;
-		}
-
-</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Dealership</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ACNRCSS Philippines</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <div class="top-text">
         <h1>ACNRCSS Philippines</h1>
     </div>
-	
+    
     <header>
-	<div class="menu-toggle" onclick="toggleMenu()">
+    <div class="menu-toggle" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
         <nav class="menu" id="menu">
             <ul>
-                <li><a href="C:\Users\admin\Downloads\New folder\PROJECT\gaming.html" onclick="closeMenu()">Gaming</a></li>
-                <li><a href="C:\Users\admin\Downloads\New folder\PROJECT\equipments.html" onclick="closeMenu()">Automotive Equipments</a></li>
-                <li><a href="C:\Users\admin\Downloads\New folder\PROJECT\about.html" onclick="closeMenu()">About Us</a></li>
+                <li><a href="gaming.html" onclick="closeMenu()">Gaming</a></li>
+                <li><a href="equipments.html" onclick="closeMenu()">Automotive Equipments</a></li>
+                <li><a href="about.html" onclick="closeMenu()">About Us</a></li>
             </ul>
-		</nav>
+        </nav>
        <div class="slideshow-container">
-    <div class="slides fade">
-        <img src="C:\Users\admin\Downloads\New folder\PROJECT\front_qtr_lh_v001.jpg" alt="Car 1" width="1400" height="650">
-    </div>
-    <div class="slides fade">
-        <img src="C:\Users\admin\Downloads\New folder\PROJECT\mclaren-p1-bahrain.webp" alt="Car 2" width="1800" height="700">
-    </div>
-	<div class="slides fade">
-        <img src="C:\Users\admin\Downloads\New folder\PROJECT\1200x800.jpg" alt="Car 2" width="1400" height="650">
-    </div>
+        <div class="slides fade">
+            <img src="front_qtr_lh_v001.jpg" alt="Car 1" width="1400" height="650">
+        </div>
+        <div class="slides fade">
+            <img src="mclaren-p1-bahrain.webp" alt="Car 2" width="1800" height="700">
+        </div>
+        <div class="slides fade">
+            <img src="1200x800.jpg" alt="Car 2" width="1400" height="650">
+        </div>
+        
     <!-- Add more slides as needed -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -285,27 +43,27 @@ a {
    <section class="categories">
     <div class="container">
         <div class="category">
-            <a href="C:\Users\admin\Downloads\New folder\PROJECT\supercars.html">
-                <img src="C:\Users\admin\Downloads\New folder\PROJECT\as.webp" alt="Supercar">
+            <a href="supercars.html">
+                <img src="as.webp" alt="Supercar">
                 <h2>SUPERCARS</h2>
             </a>
         </div>
         <div class="category">
-            <a href="C:\Users\admin\Downloads\New folder\PROJECT\F1.HTML">
-                <img src="C:\Users\admin\Downloads\New folder\PROJECT\2524215.jpg" alt="F1 Car">
+            <a href="F1.HTML">
+                <img src="2524215.jpg" alt="F1 Car">
                 <h2>F1 CARS</h2>
             </a>
         </div>
         
         <div class="category">
-            <a href="C:\Users\admin\Downloads\New folder\PROJECT\sportscar.html">
-                <img src="C:\Users\admin\Downloads\New folder\PROJECT\images.jpg" alt="Sports Car">
+            <a href="sportscar.html">
+                <img src="images.jpg" alt="Sports Car">
                 <h2>SPORTS CAR</h2>
             </a>
         </div>
         <div class="category">
-            <a href="C:\Users\admin\Downloads\New folder\PROJECT\clothes.html">
-                <img src="C:\Users\admin\Downloads\New folder\PROJECT\1500x1500_FFF_RP24_01.webp" alt="Car Accessories">
+            <a href="clothes.html">
+                <img src="1500x1500_FFF_RP24_01.webp" alt="Car Accessories">
                 <h2>CLOTHES & ACCESSORIES</h2>
             </a>
         </div>
@@ -328,51 +86,7 @@ a {
                 </form>
             </div>
         </div>
-    </footer>
-
-    <script src="script.js"></script>
+    </footer>   
+    <script src="index.js"></script>
 </body>
-
-<script src="script.js"></script>
-<script>
-
- function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.classList.toggle("active");
-			
-			// Close the menu if clicked outside
-			document.addEventListener("click", function(event) {
-				var menu = document.getElementById("menu");
-				if (!menu.contains(event.target) && !document.querySelector(".menu-toggle").contains(event.target)) {
-					menu.classList.remove("active");
-				}
-			});
-        }
-
-        function closeMenu() {
-            var menu = document.getElementById("menu");
-            menu.classList.remove("active");
-        }
-		
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    let slides = document.querySelectorAll('.slides');
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = 'none';
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-    slides[slideIndex - 1].style.display = 'block';
-    setTimeout(showSlides, 4000); // Change image every 4 seconds
-}
-
-// JavaScript for navigating slideshow
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-</script>
 </html>
